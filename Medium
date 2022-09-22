@@ -1,6 +1,6 @@
 @fkibgldxtdbmzhd1
 
-##Q1
+## Q1
 Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name). 
 If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.
 
@@ -13,7 +13,7 @@ ORDER BY LEN(CITY) desc,city;
 
 Note: Just don't use union
 
-##Q2
+## Q2
 
 Write a query identifying the type of each record in the TRIANGLES table using its three side lengths.
 Output one of the following statements for each record in the table
@@ -31,7 +31,7 @@ FROM TRIANGLES
 
 Note: Not a traingle comes first
 
-##Q3
+## Q3
 
 Query an alphabetically ordered list of all names in OCCUPATIONS, immediately followed by the first letter of each profession as a parenthetical 
 (i.e.: enclosed in parentheses). For example: AnActorName(A), ADoctorName(D), AProfessorName(P), and ASingerName(S).
@@ -48,20 +48,20 @@ ORDER BY COUNT(OCCUPATION),OCCUPATION;
 
 Note: Pay attentio to capitals and punctuations
 
-##Q4
+## Q4
 
 
 
-##Q5
+## Q5
 
 
 
-##Q6
+## Q6
 
 
 
-##Q7
+## Q7
 
 
 
-##Q8
+## Q8
