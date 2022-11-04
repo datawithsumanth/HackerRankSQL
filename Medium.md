@@ -72,11 +72,37 @@ AS P1
 Note: When both rows are strings use row_number to pivot
 
 ## Q6
+We define an employee's total earnings to be their monthly MONTHS*SALARY worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as  space-separated integers.
 
+WITH MAX_SAL AS
+(
+SELECT MAX(MONTHS*SALARY) AS MAX_SALARY
+FROM EMPLOYEE
+)
 
+SELECT  MAX(MONTHS*SALARY),COUNT(EMPLOYEE_ID)
+FROM EMPLOYEE
+WHERE (MONTHS*SALARY) = (SELECT * FROM MAX_SAL)
 
 ## Q7
+Consider A and B to be two points on a 2D plane where  are the respective minimum and maximum values of Northern Latitude (LAT_N) and  are the respective minimum and maximum values of Western Longitude (LONG_W) in STATION.
 
+SELECT ROUND(SQRT(POWER((MAX(LAT_N)-MIN(LAT_N)),2) + POWER((MAX(LONG_W)-MIN(LONG_W)),2)),4)
+FROM STATION
 
+Note: Use Power()
 
 ## Q8
+A median is defined as a number separating the higher half of a data set from the lower half. Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to  decimal places.
+
+WITH LAT_SORT AS
+(SELECT TOP 500 LAT_N, ROW_NUMBER() OVER (ORDER BY LAT_N) AS RN
+FROM STATION
+ORDER BY LAT_N DESC)
+
+SELECT 
+CAST(LAT_N AS DECIMAL(10,4))
+FROM LAT_SORT
+WHERE RN = (SELECT CEILING(MAX(RN)/2)+1 FROM LAT_SORT)
+
+Note: There is no function in SQL to calculate the median directly, so need to sort and take the middle element
